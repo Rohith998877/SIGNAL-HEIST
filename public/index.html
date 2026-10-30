@@ -1,0 +1,305 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07111f"><title>Signal Heist: Overdrive — Online</title><style>
+:root{color-scheme:dark;--bg:#07111f;--panel:#101f32;--line:#29445f;--cyan:#5af3e5;--violet:#b49aff;--gold:#ffd36e;--muted:#9ab0c9;--white:#eef7ff}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 60% -10%,#1a3b58 0%,#07111f 58%);color:var(--white);font:15px/1.45 system-ui,Segoe UI,sans-serif;min-height:100vh}button,input{font:inherit}button{border:1px solid #365571;background:#142b42;color:var(--white);padding:10px 14px;border-radius:10px;cursor:pointer;transition:.15s}button:hover:not(:disabled){border-color:var(--cyan);transform:translateY(-1px)}button:disabled{opacity:.35;cursor:not-allowed;transform:none}.primary{background:var(--cyan);color:#061a22;font-weight:800;border-color:var(--cyan)}input{width:100%;padding:11px;border:1px solid #365571;border-radius:10px;background:#081727;color:var(--white)}label{display:block;font-size:12px;color:var(--muted);margin:0 0 5px}.wrap{max-width:1120px;margin:auto;padding:18px}.header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.header-actions{display:flex;align-items:center;gap:10px}.brand{font-weight:900;letter-spacing:.1em;font-size:18px}.brand span{color:var(--cyan)}.status{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:7px}.lamp{width:8px;height:8px;border-radius:50%;background:#ff8e8e}.lamp.online{background:#5af3a4;box-shadow:0 0 12px #5af3a4}.hero{margin:10px 0 20px}.eyebrow{color:var(--cyan);font-size:11px;letter-spacing:.2em;font-weight:800}.hero h1{font-size:clamp(30px,4.5vw,52px);line-height:1.05;letter-spacing:-.045em;margin:6px 0 8px}.hero p{color:var(--muted);max-width:670px;margin:0}.layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(290px,.8fr);gap:16px}.panel{background:linear-gradient(145deg,#102239ed,#0b1929f5);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 15px 50px #0003}.panel h2{font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 14px}.lobbygrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{margin-bottom:10px}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.roomcode{font-size:24px;font-weight:900;letter-spacing:.2em;color:var(--cyan)}.hidden{display:none!important}.board{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}.tile{aspect-ratio:1;border:1px solid #29415a;border-radius:10px;background:#0b1a2a;display:grid;place-items:center;position:relative;font-size:clamp(14px,2.5vw,25px);transition:background .2s,border-color .2s}.tile.movable{border-color:var(--cyan);cursor:pointer;background:#0d263a;box-shadow:inset 0 0 12px #5af3e522}.tile.movable:hover{background:#113550;border-color:#a5fbf3}.tile.core{background:#2b2619;border-color:#806e36}.tile.trap{background:#2c172c;border-color:#7e4364}.tile.portal{background:#172444;border-color:#4c69a2}.tile.boost{background:#12372e;border-color:#4bba82}.token{position:absolute;width:18px;height:18px;border:2px solid white;border-radius:50%;right:4px;bottom:4px;box-shadow:0 0 12px currentColor;transition:all .25s ease}.p0{background:#5af3e5;color:#5af3e5}.p1{background:#b49aff;color:#b49aff}.p2{background:#ff8e8e;color:#ff8e8e}.p3{background:#ffd36e;color:#ffd36e}.stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.stat{border:1px solid #2a435c;border-radius:9px;padding:7px 10px;color:var(--muted);font-size:12px}.stat strong{color:var(--white);margin-left:5px}.scores{display:grid;gap:7px}.score{display:flex;align-items:center;justify-content:space-between;border:1px solid #243b52;border-radius:10px;padding:9px;transition:border-color .2s,background .2s}.score.active{border-color:var(--cyan);background:#12313b}.name{display:flex;align-items:center;gap:8px}.dot{width:10px;height:10px;border-radius:50%}.points{font-size:19px;font-weight:900}.actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:12px 0}.actions button{text-align:left;min-height:45px}.actions small{display:block;color:var(--muted);font-size:11px}.emotes{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.emotes button{padding:5px 9px;font-size:12px;border-radius:8px}.feed{display:grid;gap:6px;max-height:160px;overflow-y:auto;font-size:12px;color:#b8cbe0}.feed div{border-left:2px solid #2e526d;padding-left:8px}.notice{padding:10px;border-radius:10px;background:#0a1726;border:1px solid #29445f;color:var(--muted);font-size:13px;margin:10px 0}.error{color:#ff9ba7;border-color:#702b36}.success{color:var(--cyan);border-color:#215857}.players{display:grid;gap:7px;margin:10px 0}.playerrow{display:flex;justify-content:space-between;align-items:center;padding:8px;border:1px solid #29445f;border-radius:9px}.bottom{color:#718ba5;text-align:center;font-size:11px;margin:20px}.wide{width:100%}.modal{position:fixed;inset:0;background:#020914e6;display:grid;place-items:center;padding:20px;z-index:99}.modalcard{max-width:540px;width:100%;background:#102239;border:1px solid #345572;border-radius:18px;padding:22px;box-shadow:0 25px 90px #000a}.modalcard h2{margin:0 0 10px;font-size:24px}.modalcard p{color:var(--muted);font-size:14px;margin:0 0 12px}.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}.rule-item{border:1px solid #243b52;border-radius:10px;padding:9px;background:#091624;font-size:12px}.rule-item strong{color:var(--cyan);display:block;font-size:13px;margin-bottom:2px}
+.standings-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border:1px solid #264361;border-radius:10px;background:#091624}
+.rank-badge{font-weight:900;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px;margin-right:8px}
+.rank-1{background:var(--gold);color:#07111f}.rank-other{background:#2a445f;color:#fff}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.wrap{padding:13px}.header{align-items:flex-start}.panel{padding:13px}.lobbygrid{grid-template-columns:1fr}.tile{border-radius:7px}.hero{margin-top:10px}}@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style></head><body><div class="wrap"><header class="header"><div class="brand">⌁ SIGNAL <span>HEIST</span></div><div class="header-actions"><button id="rulesBtn" style="padding:6px 12px;font-size:12px">Rules / How to Play</button><button id="soundBtn" style="padding:6px 12px;font-size:12px">🔊 Sound: ON</button><div class="status"><i id="lamp" class="lamp"></i><span id="connection">Connecting…</span></div></div></header><section class="hero"><div class="eyebrow">NEON NETWORKS / ONLINE MULTIPLAYER MICRO-ARENA</div><h1>Steal the signal.<br><span style="color:var(--cyan)">Own the grid.</span></h1><p>Race across the cyber-grid, capture data cores, hijack rival signals, and unleash overdrive dashes. First operative to 12 points wins.</p></section>
+<div class="layout"><div class="leftcol"><section class="panel" id="lobbyPanel"><h2>Online lobby</h2><div class="field"><label for="name">Your callsign</label><input id="name" maxlength="18" placeholder="Enter a player name" autocomplete="nickname"></div><div class="lobbygrid"><div><button class="primary wide" id="create">Create private room</button><p style="font-size:12px;color:var(--muted);margin-top:5px">Start a room and share the 6-character code.</p></div><div><label for="roomInput">Have a room code?</label><input id="roomInput" maxlength="6" placeholder="ABC123" style="text-transform:uppercase"><button id="join" class="wide" style="margin-top:8px">Join room</button></div></div><div id="roomInfo" class="notice hidden"></div><div id="playerList" class="players"></div><div class="row"><button id="copyInvite" class="hidden">Copy invite URL</button><button id="ready" class="hidden">Ready up</button><button id="start" class="primary hidden">Start match</button><button id="leave" class="hidden">Leave room</button></div><div id="lobbyMessage" class="notice" aria-live="polite">Connect to the server to create or join a room.</div></section><section class="panel" style="margin-top:16px"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h2>Live arena</h2><div class="stats"><div class="stat">ROUND<strong id="round">—</strong></div><div class="stat">TARGET<strong>12 pts</strong></div></div></div><div id="board" class="board" aria-label="Game grid"></div><div class="row" style="font-size:12px;color:var(--muted);margin-top:12px"><span>✦ Core +2</span><span>⌁ Trap −1</span><span>◎ Portal</span><span>⚡ Cache +3</span><span style="margin-left:auto;color:var(--cyan)">Tip: Click adjacent tiles to move</span></div></section></div>
+<aside><section class="panel"><h2>Command console</h2><div id="turnbox" class="notice">Join a room to begin.</div><div id="scores" class="scores"></div><div class="actions"><button data-action="move" data-dir="up">↑ Move north<small>W / ↑</small></button><button data-action="steal">⌁ Steal signal<small>X · adjacent rival</small></button><button data-action="move" data-dir="left">← Move west<small>A / ←</small></button><button data-action="move" data-dir="right">Move east →<small>D / →</small></button><button data-action="move" data-dir="down">↓ Move south<small>S / ↓</small></button><button data-action="scan">◷ Scan<small>Space · +1 point</small></button><button data-action="dash" class="wide">⚡ Overdrive dash<small>Q · move two tiles</small></button></div><div class="emotes"><span style="font-size:11px;color:var(--muted);display:flex;align-items:center">Emote:</span><button data-emote="⚡ GG!">⚡ GG!</button><button data-emote="👾 Nice move!">👾 Nice move!</button><button data-emote="🔥 Hijacked!">🔥 Hijacked!</button><button data-emote="🛡️ On guard!">🛡️ On guard!</button></div><button id="rematch" class="primary wide hidden" style="margin-top:10px">Play again</button><h2 style="margin-top:18px">Match feed</h2><div id="feed" class="feed" aria-live="polite"></div></section><section class="panel" style="margin-top:16px"><h2>Connection & rules</h2><div id="connectionHelp" class="notice">Room state is synchronized authoritatively by the server. Reconnect within two minutes to restore your seat.</div><p style="font-size:12px;color:var(--muted)">Multiplayer micro-arena powered by Node.js & Socket.IO. Supports 2–4 players across separate devices.</p></section></aside></div><div class="bottom">SIGNAL HEIST: OVERDRIVE · SERVER-AUTHORITATIVE TURN-BASED PROTOTYPE</div></div>
+
+<!-- RULES BRIEFING MODAL -->
+<div id="rulesModal" class="modal hidden"><div class="modalcard"><div class="eyebrow">TACTICAL BRIEFING</div><h2>Signal Heist: Overdrive</h2><p>Race across the 7×7 grid, seize cyber assets, hijack points, and reach 12 points to claim dominance.</p><div class="rules-grid"><div class="rule-item"><strong>✦ Data Core (+2)</strong>Collect to immediately claim 2 points.</div><div class="rule-item"><strong>⚡ Overdrive Cache (+3)</strong>Rare energy surplus worth 3 points.</div><div class="rule-item"><strong>⌁ Signal Trap (-1)</strong>Disrupts your signal, costing 1 point.</div><div class="rule-item"><strong>◎ Portals</strong>Warp instantly between coordinate links.</div><div class="rule-item"><strong>⌁ Steal Signal</strong>Adjacent to rival? Hijack up to 2 points!</div><div class="rule-item"><strong>⚡ Overdrive Dash</strong>Spend 1 charge to vault 2 tiles across the grid.</div></div><p style="font-size:13px;color:var(--white)"><strong>Controls:</strong> Click adjacent tiles, use WASD / Arrow keys, or console buttons. First operative to 12 points wins!</p><button id="closeRules" class="primary wide">Close Briefing</button></div></div>
+
+<!-- CELEBRATORY VICTORY / GAME OVER MODAL -->
+<div id="victoryModal" class="modal hidden">
+  <canvas id="confettiCanvas" style="position:absolute;inset:0;pointer-events:none;width:100%;height:100%;z-index:1"></canvas>
+  <div class="modalcard" style="text-align:center;position:relative;z-index:2;border-color:var(--gold);box-shadow:0 0 60px rgba(255,211,110,0.3);max-width:480px">
+    <div style="font-size:56px;line-height:1;margin-bottom:10px" id="victoryEmoji">🏆</div>
+    <div class="eyebrow" id="victoryTag" style="color:var(--gold);font-weight:900">MISSION ACCOMPLISHED</div>
+    <h2 id="victoryTitle" style="color:#fff;font-size:32px;margin:8px 0">CONGRATULATIONS!</h2>
+    <p id="victoryDesc" style="color:var(--muted);font-size:14px;margin-bottom:18px"></p>
+    
+    <div style="font-size:12px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:8px;text-align:left">FINAL STANDINGS</div>
+    <div id="finalStandings" style="display:grid;gap:8px;margin-bottom:22px;text-align:left"></div>
+    
+    <div style="display:flex;gap:10px" id="victoryActions">
+      <button class="primary" id="modalRematchBtn" style="flex:1.2;background:var(--gold);color:#07111f;font-weight:900;padding:12px">Play Again ↻</button>
+      <button id="viewBoardBtn" style="flex:1">Inspect Arena</button>
+    </div>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script><script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id);
+const socket=io({reconnection:true,reconnectionAttempts:10,reconnectionDelay:500});
+const colors=['#5af3e5','#b49aff','#ff8e8e','#ffd36e'],classes=['p0','p1','p2','p3'];
+let room=null,session=null,myId=null,busy=false,lastWinnerId=null;
+
+const AudioFX={
+ ctx:null,muted:false,
+ init(){if(!this.ctx){const AC=window.AudioContext||window.webkitAudioContext;if(AC)this.ctx=new AC();}},
+ tone(freq,type='sine',dur=0.1,gain=0.14){
+  if(this.muted)return;
+  try{
+   this.init();if(!this.ctx)return;
+   if(this.ctx.state==='suspended')this.ctx.resume();
+   const osc=this.ctx.createOscillator(),g=this.ctx.createGain();
+   osc.type=type;osc.frequency.setValueAtTime(freq,this.ctx.currentTime);
+   g.gain.setValueAtTime(gain,this.ctx.currentTime);
+   g.gain.exponentialRampToValueAtTime(0.0001,this.ctx.currentTime+dur);
+   osc.connect(g);g.connect(this.ctx.destination);
+   osc.start();osc.stop(this.ctx.currentTime+dur);
+  }catch(e){}
+ },
+ move(){this.tone(440,'triangle',0.08,0.1);},
+ core(){this.tone(587.33,'sine',0.12,0.14);setTimeout(()=>this.tone(880,'sine',0.2,0.16),90);},
+ trap(){this.tone(140,'sawtooth',0.22,0.18);},
+ portal(){this.tone(350,'sine',0.1,0.12);setTimeout(()=>this.tone(700,'sine',0.15,0.14),70);setTimeout(()=>this.tone(1050,'sine',0.18,0.16),140);},
+ dash(){this.tone(300,'sawtooth',0.12,0.18);setTimeout(()=>this.tone(620,'square',0.18,0.14),90);},
+ steal(){this.tone(784,'triangle',0.1,0.15);setTimeout(()=>this.tone(523,'triangle',0.18,0.16),100);},
+ win(){[523.25,659.25,783.99,1046.5].forEach((f,i)=>setTimeout(()=>this.tone(f,'sine',0.3,0.18),i*130));},
+ defeat(){[350,290,220,160].forEach((f,i)=>setTimeout(()=>this.tone(f,'sawtooth',0.35,0.15),i*140));}
+};
+
+$('soundBtn').onclick=()=>{AudioFX.muted=!AudioFX.muted;$('soundBtn').textContent=AudioFX.muted?'🔇 Sound: OFF':'🔊 Sound: ON';};
+$('rulesBtn').onclick=()=>$('rulesModal').classList.remove('hidden');
+$('closeRules').onclick=()=>$('rulesModal').classList.add('hidden');
+$('viewBoardBtn').onclick=()=>$('victoryModal').classList.add('hidden');
+
+function msg(text,kind=''){const el=$('lobbyMessage');el.textContent=text;el.className='notice '+kind;}
+function request(event,data){return new Promise(resolve=>{let settled=false;const timer=setTimeout(()=>{if(!settled){settled=true;resolve({ok:false,error:'Server response timed out. Check your connection and retry.'})}},7000);socket.emit(event,data,result=>{if(!settled){settled=true;clearTimeout(timer);resolve(result||{ok:false,error:'Empty server response'})}})});}
+function saveSession(s){session=s;try{if(s)sessionStorage.setItem('signalHeistSession',JSON.stringify(s));else sessionStorage.removeItem('signalHeistSession')}catch{}}
+
+function render(r){
+ room=r;if(!r){return}
+ myId=session?.playerId||myId;
+ const mine=r.players.find(p=>p.id===myId);
+ $('roomInfo').classList.remove('hidden');
+ $('roomInfo').innerHTML='<div>ROOM CODE</div><div class="roomcode">'+r.code+'</div><div>'+(r.started?'Match in progress':'Share this code with friends')+'</div>';
+ $('playerList').innerHTML=r.players.map(p=>'<div class="playerrow"><span>'+esc(p.name)+(p.id===r.hostId?' · HOST':'')+(p.id===myId?' · YOU':'')+'</span><span class="'+(p.connected?'success':'error')+'">'+(p.connected?'● Connected':'Reconnecting…')+(p.ready?' · Ready':'')+'</span></div>').join('');
+ $('copyInvite').classList.remove('hidden');$('leave').classList.remove('hidden');
+ $('ready').classList.toggle('hidden',r.started||!mine);
+ $('ready').textContent=mine?.ready?'Cancel ready':'Ready up';
+ $('start').classList.toggle('hidden',r.started||r.hostId!==myId);
+ $('start').disabled=r.players.filter(p=>p.connected).length<2||r.players.some(p=>p.connected&&!p.ready&&p.id!==r.hostId);
+ $('start').textContent='Start match';
+ $('lobbyMessage').textContent=r.started?'Match live. Only the player whose turn it is can act.':'Waiting for players. Host can start when at least two players are connected and others are ready.';
+ renderGame(r);
+}
+
+function renderGame(r){
+ const state=r.state;const board=$('board');board.innerHTML='';
+ const mine=r.players.find(p=>p.id===myId);
+ const active=state&&r.players[state.turn];
+ const isMyTurn=r.started&&state&&!state.over&&active&&active.id===myId&&!busy;
+
+ const validTargets={};
+ if(isMyTurn&&mine){
+  const myX=mine.pos%7,myY=Math.floor(mine.pos/7);
+  [[0,-1,'up'],[0,1,'down'],[-1,0,'left'],[1,0,'right']].forEach(([dx,dy,dir])=>{
+   const nx=myX+dx,ny=myY+dy;
+   if(nx>=0&&nx<7&&ny>=0&&ny<7){
+    const to=ny*7+nx;
+    if(!r.players.some(q=>q.id!==mine.id&&q.pos===to))validTargets[to]=dir;
+   }
+  });
+ }
+
+ for(let i=0;i<49;i++){
+  const tile=document.createElement('div');
+  const type=state?.tiles?.[i]||'';
+  tile.className='tile '+type+(validTargets[i]?' movable':'');
+  tile.textContent=type==='core'?'✦':type==='trap'?'⌁':type==='portal'?'◎':type==='boost'?'⚡':'';
+  if(validTargets[i]){
+   tile.title='Click to move '+validTargets[i];
+   tile.onclick=()=>doRequest('game:action',{type:'move',direction:validTargets[i]});
+  }
+  r.players.forEach((p,j)=>{if(p.pos===i){const token=document.createElement('span');token.className='token '+classes[j];token.title=p.name;tile.appendChild(token)}});
+  board.appendChild(tile);
+ }
+
+ $('round').textContent=state?.round??'—';
+ $('scores').innerHTML=r.players.map((p,i)=>'<div class="score '+(state&&!state.over&&i===state.turn?'active':'')+'"><div class="name"><i class="dot" style="background:'+colors[i]+'"></i>'+esc(p.name)+(p.id===myId?' (you)':'')+'</div><div style="text-align:right"><div class="points">'+p.score+'</div><small>⚡ '+p.charges+'</small></div></div>').join('');
+ 
+ if(state?.over&&state?.winner){
+  if(lastWinnerId!==state.winner){
+   lastWinnerId=state.winner;
+   showVictoryModal(r,state.winner);
+  }
+ }else{
+  if(lastWinnerId){
+   lastWinnerId=null;
+   $('victoryModal').classList.add('hidden');
+   stopConfetti();
+  }
+ }
+ 
+ $('turnbox').textContent=!r.started?'Start a match when your party is ready.':state.over?'🏆 '+(r.players.find(p=>p.id===state.winner)?.name||'A player')+' wins!':active?(active.id===myId?'Your turn — choose an action or click a tile.':active.name+' is playing…'):'Match waiting';
+ document.querySelectorAll('[data-action]').forEach(b=>b.disabled=!isMyTurn);
+ $('rematch').classList.toggle('hidden',!state?.over);
+ $('rematch').disabled=r.hostId!==myId;
+ $('feed').innerHTML=(state?.feed||[]).map(x=>'<div>'+esc(x)+'</div>').join('');
+}
+
+function showVictoryModal(r,winnerId){
+ const winner=r.players.find(p=>p.id===winnerId);
+ const isMe=winnerId===myId;
+ if(isMe){
+  AudioFX.win();
+  startConfetti();
+  $('victoryEmoji').textContent='🏆';
+  $('victoryTag').textContent='MISSION ACCOMPLISHED';
+  $('victoryTag').style.color='var(--gold)';
+  $('victoryTitle').textContent='CONGRATULATIONS!';
+  $('victoryDesc').textContent=`You secured ${winner?.score||12} signal points and claimed grid supremacy!`;
+ }else{
+  AudioFX.defeat();
+  $('victoryEmoji').textContent='💀';
+  $('victoryTag').textContent='GRID HIJACKED';
+  $('victoryTag').style.color='#ff8e8e';
+  $('victoryTitle').textContent='DEFEAT';
+  $('victoryDesc').textContent=`${winner?.name||'Rival'} reached ${winner?.score||12} points first. Prepare for the next round!`;
+ }
+
+ const sorted=[...r.players].sort((a,b)=>b.score-a.score);
+ $('finalStandings').innerHTML=sorted.map((p,rank)=>{
+  const isWinner=p.id===winnerId;
+  return `<div class="standings-row" style="${isWinner?'border-color:var(--gold);background:#1f2118':''}">
+    <div style="display:flex;align-items:center">
+      <span class="rank-badge ${isWinner?'rank-1':'rank-other'}">${rank+1}</span>
+      <span style="font-weight:700;color:${isWinner?'var(--gold)':'var(--white)'}">${esc(p.name)} ${p.id===myId?'(You)':''}</span>
+    </div>
+    <div style="text-align:right">
+      <strong style="font-size:16px;color:${isWinner?'var(--gold)':'var(--cyan)'}">${p.score} pts</strong>
+      ${isWinner?'<span style="display:block;font-size:10px;color:var(--gold);font-weight:800">WINNER 🏆</span>':''}
+    </div>
+  </div>`;
+ }).join('');
+
+ const isHost=r.hostId===myId;
+ $('modalRematchBtn').style.display=isHost?'block':'none';
+ if(!isHost){
+  $('modalRematchBtn').textContent='Waiting for host to rematch…';
+ }else{
+  $('modalRematchBtn').textContent='Play Again ↻';
+ }
+
+ $('victoryModal').classList.remove('hidden');
+}
+
+$('modalRematchBtn').onclick=async()=>{
+ const res=await request('match:rematch',{});
+ if(!res.ok)msg(res.error,'error');
+};
+
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+async function doRequest(event,data){
+ if(busy)return;busy=true;
+ document.querySelectorAll('[data-action]').forEach(b=>b.disabled=true);
+ const res=await request(event,data);
+ busy=false;
+ if(!res.ok){msg(res.error,'error');}
+ else if(event==='game:action'){
+  if(data.type==='move')AudioFX.move();
+  else if(data.type==='dash')AudioFX.dash();
+  else if(data.type==='steal')AudioFX.steal();
+  else if(data.type==='scan')AudioFX.core();
+  msg('Action accepted.','success');
+ }
+ if(room)render(room);
+}
+
+document.querySelectorAll('[data-emote]').forEach(b=>{
+ b.onclick=async()=>{
+  const emote=b.dataset.emote;
+  await request('game:emote',{text:emote});
+ };
+});
+
+$('create').onclick=async()=>{const res=await request('room:create',{name:$('name').value});if(!res.ok)return msg(res.error,'error');saveSession({code:res.room.code,playerId:res.playerId,token:res.token});myId=res.playerId;render(res.room);msg('Room created. Share the invite code.','success');};
+$('join').onclick=async()=>{const res=await request('room:join',{code:$('roomInput').value,name:$('name').value});if(!res.ok)return msg(res.error,'error');saveSession({code:res.room.code,playerId:res.playerId,token:res.token});myId=res.playerId;render(res.room);msg('Joined room successfully.','success');};
+
+socket.on('room:update',r=>{
+ if(session&&session.code===r.code){room=r;myId=session.playerId;render(r);}
+ else if(room?.code===r.code)render(r);
+});
+socket.on('session:resume',s=>{saveSession(s);myId=s.playerId;msg('Session restored.','success');});
+socket.on('session:replaced',()=>msg('This session was reconnected in another tab. This tab is no longer active.','error'));
+
+socket.on('connect',async()=>{
+ $('lamp').classList.add('online');$('connection').textContent='Connected';
+ let s=session;try{if(!s)s=JSON.parse(sessionStorage.getItem('signalHeistSession')||'null');}catch{}
+ if(s?.code&&s?.token){
+  const res=await request('room:resume',s);
+  if(res.ok){saveSession(s);myId=s.playerId;render(res.room);msg('Reconnected to your room.','success');}
+  else{saveSession(null);msg('Previous session expired. Create or join a room again.','error');}
+ }
+});
+socket.on('disconnect',()=>{$('lamp').classList.remove('online');$('connection').textContent='Reconnecting…';msg('Connection lost. Attempting to reconnect; your seat is retained briefly.','error');});
+socket.on('connect_error',()=>msg('Cannot reach the game server. Check that the server is running, then refresh.','error'));
+
+$('ready').onclick=async()=>{const p=room?.players.find(p=>p.id===myId);const res=await request('player:ready',{ready:!p?.ready});if(!res.ok)msg(res.error,'error');};
+$('start').onclick=async()=>{const res=await request('match:start',{});if(!res.ok)msg(res.error,'error');};
+$('leave').onclick=async()=>{
+ await request('room:leave',{});saveSession(null);room=null;myId=null;lastWinnerId=null;
+ $('victoryModal').classList.add('hidden');stopConfetti();
+ $('roomInfo').classList.add('hidden');$('playerList').innerHTML='';
+ ['copyInvite','ready','start','leave','rematch'].forEach(id=>$(id).classList.add('hidden'));
+ $('board').innerHTML='';$('scores').innerHTML='';$('round').textContent='—';$('turnbox').textContent='Join a room to begin.';msg('You left the room.');
+};
+$('copyInvite').onclick=async()=>{
+ const url=location.origin+location.pathname+'?room='+room.code;
+ try{await navigator.clipboard.writeText(url);msg('Invite URL copied: '+url,'success');}
+ catch{msg('Share room code '+room.code+' or copy this URL: '+url);}
+};
+document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>{
+ const type=b.dataset.action;const action=type==='move'?{type,direction:b.dataset.dir}:{type};doRequest('game:action',action);
+});
+$('rematch').onclick=async()=>{const res=await request('match:rematch',{});if(!res.ok)msg(res.error,'error');};
+
+const q=new URLSearchParams(location.search).get('room');if(q)$('roomInput').value=q.toUpperCase();
+
+document.addEventListener('keydown',e=>{
+ if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName)||e.ctrlKey||e.metaKey||e.altKey)return;
+ const key=e.key.toLowerCase(),map={arrowup:['move','up'],w:['move','up'],arrowdown:['move','down'],s:['move','down'],arrowleft:['move','left'],a:['move','left'],arrowright:['move','right'],d:['move','right'],x:['steal'],q:['dash'],' ':['scan']};
+ if(!map[key])return;
+ e.preventDefault();
+ const [type,direction]=map[key];
+ const b=[...document.querySelectorAll('[data-action]')].find(b=>b.dataset.action===type&&(direction?b.dataset.dir===direction:true));
+ b?.click();
+});
+
+/* Canvas Confetti Animation */
+let confettiAnimId=null, confettiParticles=[];
+function startConfetti(){
+ const canvas=$('confettiCanvas'), ctx=canvas.getContext('2d');
+ canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight;
+ const colors=['#5af3e5','#ffd36e','#b49aff','#ff8e8e','#ffffff'];
+ confettiParticles=Array.from({length:90},()=>({
+  x:Math.random()*canvas.width, y:Math.random()*canvas.height-canvas.height,
+  size:Math.random()*7+5, color:colors[Math.floor(Math.random()*colors.length)],
+  vx:Math.random()*4-2, vy:Math.random()*3+2, rot:Math.random()*360, vrot:Math.random()*8-4
+ }));
+ function loop(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  confettiParticles.forEach(p=>{
+   p.x+=p.vx;p.y+=p.vy;p.rot+=p.vrot;
+   if(p.y>canvas.height)p.y=-10;
+   ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);
+   ctx.fillStyle=p.color;ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size*0.6);
+   ctx.restore();
+  });
+  confettiAnimId=requestAnimationFrame(loop);
+ }
+ if(confettiAnimId)cancelAnimationFrame(confettiAnimId);
+ loop();
+}
+function stopConfetti(){
+ if(confettiAnimId){cancelAnimationFrame(confettiAnimId);confettiAnimId=null;}
+ const canvas=$('confettiCanvas');if(canvas){const ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);}
+}
+})();
+</script></body></html>
